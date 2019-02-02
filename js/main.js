@@ -7,5 +7,12 @@ $(function(){
     var $users = $('#users');
     var $username = $('#username');
     var $error = $('#error');
+
+    $usernameForm.submit(function(e) {    				
+        e.preventDefault();
+
+    
+        $username.val('');
+    });    		
     
 })
