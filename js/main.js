@@ -16,7 +16,7 @@ $(function(){
                 $('#mainWindow').show();
             } else {
                 $error.addClass('alert alert-danger');
-                $error.html('Username is already taken');
+                $error.html('This username is already taken');
             }
         });        
     
@@ -68,5 +68,14 @@ $(function(){
     }
 
     preX();
+
+    socket.on('new_message', function(data) {
+        socket.emit('getUserFromMessage');
+        if(data.user == s_user || !s_user) {            
+            $chat.append('<div class="outgoing_msg"><div class="sent_msg"><strong><p>' + data.user + '</strong>: ' + data.msg + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>'); 
+        } else {
+            $chat.append('<div class="incoming_msg"><div class="recieved_msg"><div class="received_withd_msg"><strong><p>' + data.user + '</strong>: ' + data.msg + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>');          
+        }    
+    });    				
     
 })
