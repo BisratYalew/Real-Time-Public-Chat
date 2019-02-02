@@ -33,7 +33,7 @@ $(function(){
 
             for(i=0; i<data.length; i++) {
                 if(data[i] == user) {
-                    html += '<span class="bg-info"><span class="text-warning"> &#9679;  </span>' + '<span class="text-warning"> ' +  user + " </span>(You) &nbsp; - &nbsp;&nbsp;&nbsp;" + '<a class="text-danger" href="https://w13chat.herokuapp.com/">Disconnect</a>' + '</span><br>';
+                    html += '<span class="bg-info"><span class="text-warning"> &#9679;  </span>' + '<span class="text-warning"> ' +  user + " </span>(You) &nbsp; - &nbsp;&nbsp;&nbsp;" + '<a class="text-danger" href="https://rtpc.herokuapp.com/">Disconnect</a>' + '</span><br>';
                 } else {
                    html += '<span class="bg-success"><span class="text-success"> &#9679;  </span>' + '<span class="text-primary"> ' + data[i] + '</span></span><br>';
                 }
