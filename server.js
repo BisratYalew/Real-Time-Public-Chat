@@ -15,3 +15,22 @@ app.get('/', (req, res, next) => {
 	res.sendFile(__dirname + '/index.html');
 
 });
+
+
+io.sockets.on('connection', function(socket) {
+
+	socket.on('add_new_user', function(data, cb) {
+
+        socket.username = data;
+        
+		if(usernames.indexOf(data) !== -1) {
+			cb(false);
+		} else {
+			cb(true);
+			socket.username = data;
+			usernames.push(socket.username);
+			updateUsernames();
+		}
+	});
+
+});
