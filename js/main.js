@@ -44,5 +44,12 @@ $(function(){
         socket.emit('getUser');    
 
     });
+
+    $messageForm.submit(function(e) {
+        e.preventDefault();
+        var dt = new Date();
+        socket.emit('send_message', $message.val(), dt);
+        $message.val('');
+    });
     
 })
