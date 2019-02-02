@@ -10,15 +10,14 @@ server.listen(process.env.PORT || 3000);
 
 app.use(express.static("."));
 
+// Send index.html file
 app.get('/', (req, res, next) => {
-
-	res.sendFile(__dirname + '/index.html');
-
+    res.sendFile(__dirname + '/index.html');
 });
 
 
 io.sockets.on('connection', (socket) => {
-
+    
 	socket.on('add_new_user', (data, cb) => {
         socket.username = data;
         
