@@ -22,23 +22,21 @@ io.sockets.on('connection', (socket) => {
 	socket.on('add_new_user', (data, cb) => {
         socket.username = data;
         
-		if(usernames.indexOf(data) !== -1) {
-			cb(false);
-		} else {
-			cb(true);
-			socket.username = data;
-			usernames.push(socket.username);
-			updateUsernames();
-		}
-    });
-    
+        if(usernames.indexOf(data) !== -1) {
+            cb(false);
+        } else {
+            cb(true);
+            socket.username = data;
+            usernames.push(socket.username);
+            updateUsernames();
+        }
+    });    
 
     
 	// Update Usernames
     function updateUsernames() {
         io.sockets.emit('usernames', usernames);
-    }
-    
+    }    
     
     // Get User
     socket.on('getUser', () => {
