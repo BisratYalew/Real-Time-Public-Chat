@@ -50,6 +50,11 @@ io.sockets.on('connection', (socket) => {
     // Get User From Message
 	socket.on('getUserFromMessage', () => {
 		socket.emit('getUserFromMsg', socket.username);
-	});
+    });
+    
+     // Send Message
+	socket.on('send_message', (data, time) => {
+		io.sockets.emit('new_message', {msg: data, user: socket.username, time });
+	});  
 
 });
