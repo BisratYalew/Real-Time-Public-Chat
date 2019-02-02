@@ -51,5 +51,14 @@ $(function(){
         socket.emit('send_message', $message.val(), dt);
         $message.val('');
     });
+
+    let s_user;
+
+    socket.on('getUserFromMsg', (user) => {           
+        function set() {
+            s_user = user; 
+        };
+        set();
+    });
     
 })
