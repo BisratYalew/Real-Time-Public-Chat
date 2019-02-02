@@ -14,6 +14,9 @@ $(function(){
             if(data) {
                 $('#namesList').hide();
                 $('#mainWindow').show();
+            } else {
+                $error.addClass('alert alert-danger');
+                $error.html('Username is already taken');
             }
         });
     
