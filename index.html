@@ -27,7 +27,36 @@
 	                 </div>
                   </div>
                 </div>                   
-            </div>    	
+            </div> 
+            
+            
+            <div id="mainWindow">
+                <h1 style="color: #274472; font-weight: bolder">Real Time Public Chat</h1>
+                    <div class="messaging">  
+                     <div class="mesgs">
+                       <div class="msg_history"  id="chatWindow">
+                         <div class="incoming_msg">
+                           <div class="received_msg"></div>
+                         <div class="outgoing_msg"></div>                       
+                       
+                       </div>                
+                     </div>   
+                     <div class="type_msg">
+                         <div class="input_msg_write">
+                            <form id="messageForm">
+                                <input id="message" type="text" class="write_msg" placeholder="Type a message..." />
+                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>                                
+                            </form>                          
+                            </div>
+                        </div>                     
+                   </div>
+                   </div>
+                   <div id="usersList">
+                        <div id="users"></div>
+                    </div>
+            </div> 
+
         </div>
+
     </body>
 </html>
