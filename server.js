@@ -55,6 +55,13 @@ io.sockets.on('connection', (socket) => {
      // Send Message
 	socket.on('send_message', (data, time) => {
 		io.sockets.emit('new_message', {msg: data, user: socket.username, time });
-	});  
+    });
+    
+    // Disconnect
+	socket.on('disconnect', (data) => {
+		if(!socket.username) return;
+		usernames.splice(usernames.indexOf(socket.username), 1);
+		updateUsernames();
+	})
 
 });
