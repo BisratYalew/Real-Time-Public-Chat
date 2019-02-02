@@ -60,5 +60,11 @@ $(function(){
         };
         set();
     });
+
+    function preX() {
+        socket.emit('getUserFromMessage'); 
+    }
+
+    preX();
     
 })
