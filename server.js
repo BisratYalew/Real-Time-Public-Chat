@@ -17,9 +17,9 @@ app.get('/', (req, res, next) => {
 });
 
 
-io.sockets.on('connection', function(socket) {
+io.sockets.on('connection', (socket) => {
 
-	socket.on('add_new_user', function(data, cb) {
+	socket.on('add_new_user', (data, cb) => {
 
         socket.username = data;
         
@@ -38,9 +38,18 @@ io.sockets.on('connection', function(socket) {
 	// Update Usernames
 	function updateUsernames() {
 		io.sockets.emit('usernames', usernames);
-	}
+    }
+    
+    
+    // Get User
+	socket.on('getUser', () => {
+		socket.emit('get_user', socket.username);
+	});
 
 
-
+    // Get User From Message
+	socket.on('getUserFromMessage', () => {
+		socket.emit('getUserFromMsg', socket.username);
+	});
 
 });
