@@ -1,0 +1,28 @@
+{
+  "name": "rtpc",
+  "version": "0.0.1",
+  "description": "Real Time Public Chat (RTPC)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bisratyalew/Real-Time-Public-Chat.git"
+  },
+  "keywords": [
+    "socket.io",
+    "websockets",
+    "chat",
+    "node.js",
+    "javascript",
+    "public-chat"
+  ],
+  "author": "Bisrat Yalew <bisratyalew10@gmail.com> (https://t.me/bisratyalew)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bisratyalew/Real-Time-Public-Chat/issues"
+  },
+  "homepage": "https://github.com/bisratyalew/Real-Time-Public-Chat#readme"
+}
