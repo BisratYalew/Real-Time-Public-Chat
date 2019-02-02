@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/bisratyalew/Real-Time-Public-Chat/issues"
   },
-  "homepage": "https://github.com/bisratyalew/Real-Time-Public-Chat#readme"
+  "homepage": "https://github.com/bisratyalew/Real-Time-Public-Chat#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
