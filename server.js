@@ -31,6 +31,16 @@ io.sockets.on('connection', function(socket) {
 			usernames.push(socket.username);
 			updateUsernames();
 		}
-	});
+    });
+    
+
+    
+	// Update Usernames
+	function updateUsernames() {
+		io.sockets.emit('usernames', usernames);
+	}
+
+
+
 
 });
