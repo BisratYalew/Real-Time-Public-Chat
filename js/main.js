@@ -10,7 +10,12 @@ $(function(){
 
     $usernameForm.submit(function(e) {    				
         e.preventDefault();
-
+        socket.emit('add_new_user', $username.val(), function(data){
+            if(data) {
+                $('#namesList').hide();
+                $('#mainWindow').show();
+            }
+        });
     
         $username.val('');
     });    		
