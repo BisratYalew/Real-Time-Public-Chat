@@ -25,6 +25,8 @@ $(function(){
     
     socket.on('usernames', function(data) {
 
+        preX();
+
         socket.on('get_user', function(user) {    
 
             var html = '<p class="bg-primary" style="background-color: #274472">Active Users' + ' (' + data.length + ')' + '</p>';
