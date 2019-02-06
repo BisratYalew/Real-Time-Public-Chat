@@ -71,6 +71,7 @@ $(function(){
 
     socket.on('new_message', function(data) {
         socket.emit('getUserFromMessage');
+        $chat.animate({ scrollTop: $(document).height() }, "slow");
         if(data.user == s_user || !s_user) {            
             $chat.append('<div class="outgoing_msg"><div class="sent_msg"><strong><p>' + data.user + '</strong>: ' + data.msg + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>'); 
         } else {
