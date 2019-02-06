@@ -2,6 +2,7 @@ const express       = require('express');
 const app           = express(); 
 const server        = require('http').createServer(app);
 const io            = require('socket.io').listen(server);
+const config        = require('./config');
 
 
 usernames = [];
@@ -12,7 +13,7 @@ const encodeHTML = (data) => {
 }
 
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || config.PORT);
 
 app.use(express.static("."));
 
