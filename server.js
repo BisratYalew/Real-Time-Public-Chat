@@ -6,6 +6,12 @@ const io            = require('socket.io').listen(server);
 
 usernames = [];
 
+
+const encodeHTML = (data) => {
+    return data.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
+
 server.listen(process.env.PORT || 3000);
 
 app.use(express.static("."));
@@ -50,7 +56,7 @@ io.sockets.on('connection', (socket) => {
     
     // Send Message
     socket.on('send_message', (data, time) => {
-        io.sockets.emit('new_message', {msg: data, user: socket.username, time });
+        io.sockets.emit('new_message', {msg: encodeHTML(data), user: socket.username, time });
     });
     
     // Disconnect
