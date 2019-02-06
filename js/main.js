@@ -50,7 +50,7 @@ $(function(){
     $messageForm.submit(function(e) {
         e.preventDefault();
         var dt = new Date();
-        socket.emit('send_message', $message.val(), dt);
+        $message.val() ? socket.emit('send_message', $message.val(), dt) : alert('Empty message not allowed');
         $message.val('');
     });
 
