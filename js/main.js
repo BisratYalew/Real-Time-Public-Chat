@@ -8,6 +8,10 @@ $(function(){
     var $username = $('#username');
     var $error = $('#error');
 
+    function escaped(unescaped){
+        return new Option(unescaped).innerHTML;
+    }
+
     $usernameForm.submit(function(e) {    				
         e.preventDefault();
         socket.emit('add_new_user', $username.val(), function(data){
@@ -33,9 +37,9 @@ $(function(){
 
             for(i=0; i<data.length; i++) {
                 if(data[i] == user) {
-                    html += '<span class="bg-info"><span class="text-warning"> &#9679;  </span>' + '<span class="text-warning"> ' +  user + " </span>(You) &nbsp; - &nbsp;&nbsp;&nbsp;" + '<a class="text-danger" href="https://rtpc.herokuapp.com/">Disconnect</a>' + '</span><br>';
+                    html += '<span class="bg-info"><span class="text-warning"> &#9679;  </span>' + '<span class="text-warning"> ' +  escaped(user) + " </span>(You) &nbsp; - &nbsp;&nbsp;&nbsp;" + '<a class="text-danger" href="https://rtpc.herokuapp.com/">Disconnect</a>' + '</span><br>';
                 } else {
-                   html += '<span class="bg-success"><span class="text-success"> &#9679;  </span>' + '<span class="text-primary"> ' + data[i] + '</span></span><br>';
+                   html += '<span class="bg-success"><span class="text-success"> &#9679;  </span>' + '<span class="text-primary"> ' + escaped(data[i]) + '</span></span><br>';
                 }
             }
 
@@ -68,14 +72,14 @@ $(function(){
     }
 
     preX();
-
+    
     socket.on('new_message', function(data) {
         socket.emit('getUserFromMessage');
         $chat.animate({ scrollTop: $(document).height() }, "slow");
         if(data.user == s_user || !s_user) {            
-            $chat.append('<div class="outgoing_msg"><div class="sent_msg"><strong><p>' + data.user + '</strong>: ' + data.msg + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>'); 
+            $chat.append('<div class="outgoing_msg"><div class="sent_msg"><strong><p>' + escaped(data.user) + '</strong>: ' + escaped(data.msg) + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>'); 
         } else {
-            $chat.append('<div class="incoming_msg"><div class="recieved_msg"><div class="received_withd_msg"><strong><p>' + data.user + '</strong>: ' + data.msg + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>');          
+            $chat.append('<div class="incoming_msg"><div class="recieved_msg"><div class="received_withd_msg"><strong><p>' + escaped(data.user) + '</strong>: ' + escaped(data.msg) + '</p><span class="time_date">' +  moment().calendar(data.time) + '</span> </div></div></div>');          
         }    
     });    				
     
